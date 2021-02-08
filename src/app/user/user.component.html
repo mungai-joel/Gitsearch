@@ -1,6 +1,4 @@
-
 <div class="container main">
-
   <div class="jumbotron bg-blacks">
     <img src="../../assets/github_logo.png" alt="git" width="150" height="150" class="logo">
     <img style="float: right;" src="../../assets/github_logo.png" alt="git" width="150" height="150" class="logo">
@@ -50,24 +48,24 @@
           <h2 class="text-center">Repositories</h2>
         </div>
         <div class="">
-          <div class="card bg-b" *ngFor="let repository for repo">
+          <div class="card bg-b" *ngFor="let repo of repository">
             <div class="card-header">
               <h4 class="card-title"> <span class="h4">REPOSITORY NAME:</span><span class="rep"
-                  appUnderline>{{repository.name}}</span> </h4>
+                  appUnderline>{{repo.name}}</span> </h4>
               <hr>
             </div>
             <div class="card-body">
-              <p> <span class="h5">DESCRIPTION:</span> {{repository.description}}</p>
-              <div><span class="h5">Language:</span><span class="float-right">{{repository.language}}</span>
+              <p> <span class="h5">DESCRIPTION:</span> {{repo.description}}</p>
+              <div><span class="h5">Language:</span><span class="float-right">{{repo.language}}</span>
+              </div>
+              <div><span class="h5">Created:</span>
+              <span class="float-right">{{repo.created_at | dateCount}}</span></div>
+              <div><span class="h5"></span><span class="float-right">{{repo.created_at | date}}</span>
               </div>
               
-
-
+              
             </div>
             <div class="card-footer"></div>
-        
-        
-            
           </div>
         </div>
       </div>

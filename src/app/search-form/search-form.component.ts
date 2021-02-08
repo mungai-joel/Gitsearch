@@ -9,7 +9,7 @@ export class SearchFormComponent implements OnInit {
   userName?: string;
   @Output() searchOutput = new EventEmitter<any>();
 
-  constructor() { }
+  
 
 
  
@@ -17,6 +17,8 @@ export class SearchFormComponent implements OnInit {
     this.searchOutput.emit(this.userName);
     this.userName = '';
   }
+  constructor() { }
+
   ngOnInit(): void {}
 
 }

@@ -16,7 +16,7 @@ export class UserServiceService {
   //apiUrl = environment.apiKey;
 
   constructor(private http: HttpClient) {
-    this.newUser = new User('', '', '', '', '', '', 0, 0, 0, new Date());
+    this.newUser = new User('', '', '', '', '', '', 0, 0, 0, new Date(), );
     this.newRepo = new Repo('', '', '', new Date(), '');
   }
 
@@ -33,7 +33,6 @@ export class UserServiceService {
       followers: number;
       following: number;
       avatar_url: string;
-      created_at: Date;
     }
 
     let promise = new Promise((resolve, reject) => {
@@ -68,7 +67,6 @@ export class UserServiceService {
       html_url: string;
       description: string;
       language: string;
-      created_at: Date;
     }
     let promise = new Promise<void>((resolve, reject) => {
       this.http
@@ -83,7 +81,7 @@ export class UserServiceService {
           (results: any) => {
             this.newRepo = results;
             //console.log(results);
-            resolve();
+            resolve(results);
           },
           (error: any) => {
             console.log(error);

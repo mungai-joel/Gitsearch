@@ -1,6 +1,6 @@
 import { User } from './../user';
 import { Repo } from '../repo';
-import { UserServiceService } from '../user-service/service.service'
+import { UserServiceService } from '../user-service/service.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -14,40 +14,45 @@ export class UserComponent implements OnInit {
   searchUsers = true;
 
   user?: any;
-  repo?: Repo;
-  username?: string;
+  repository?: any;
+  username?: any;
 
   constructor(
     private userService: UserServiceService,
-  ) {}
+  ) {this.userService.getRepoDetails(this.username).then(newRepo=>{
+    this.repository=newRepo
+  })}
 
-  getUser(username: string) {
+  getUser(username: any) {
     this.userService.getUserDetail(username).then(
       (results: any) => {
         this.user = this.userService.newUser;
         console.log(results);
       },
-      (error: any) => {
+      (error) => {
         alert('Enter valid username');
         console.log(error);
       }
     );
-}
-  //   this.repoService.getRepoDetails(username).then(
-  //     (results: any) => {
-  //       this.repo = this.repoService.newRepo;
-  //       console.log(results);
-  //     },
-  //     (error: any) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
-  ngOnInit() {
-    this.getUser('mungai-joel');
   }
+  getRepo(username: string) {
+    this.userService.getRepoDetails(username).then(
+      (results) => {
+        this.repository = this.userService.newRepo;
+        console.log(results);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+ 
+ngOnInit() {
+this.getUser('mungai-joel');
+this.getRepo('mungai-joel');
 }
+
 //getUser() {
 //this.userService.getUserDetails();
 //this.user = this.userService.user;
@@ -67,4 +72,4 @@ export class UserComponent implements OnInit {
 //this.userService.getRepos(mungai-joel);
 //this.repo = this.userService.repo;
 //}
-//}
+}
