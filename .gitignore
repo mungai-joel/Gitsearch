@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 #production
-/environments
+environments.ts
