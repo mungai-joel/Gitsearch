@@ -12,7 +12,6 @@ import { HttpClient } from '@angular/common/http';
 export class UserServiceService {
   newUser: User;
   newRepo: Repo;
-  apiKey: string = environment.apiKey;
   //apiUrl = environment.apiKey;
 
   constructor(private http: HttpClient) {
@@ -39,10 +38,7 @@ export class UserServiceService {
       this.http
         .get<Profile>(
           environment.apiUrl +
-            username +
-            '?access_token=' +
-            environment.apiKey
-        )
+            username)
         .toPromise()
         .then(
           (response:any) => {
@@ -73,8 +69,7 @@ export class UserServiceService {
         .get<Repos>(
           'https://api.github.com/users/' +
             username +
-            '/repos?access_token=' +
-            environment.apiKey
+            '/repos'
         )
         .toPromise()
         .then(
