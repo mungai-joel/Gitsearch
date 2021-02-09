@@ -35,9 +35,9 @@ export class UserComponent implements OnInit {
       }
     );
   }
-  getRepo(username: string) {
+  getRepo(username:any) {
     this.userService.getRepoDetails(username).then(
-      (results) => {
+      (results: any) => {
         this.repository = this.userService.newRepo;
         console.log(results);
       },
